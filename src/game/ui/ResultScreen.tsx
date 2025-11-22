@@ -1,19 +1,28 @@
-// frontend/src/screens/ResultScreen.tsx
+// src/game/ui/ResultScreen.tsx
+"use client";
 
-import type { SimulationResponse } from "../App";
+// نفس النوع المستخدم في page.tsx
+export type SimulationResponse = {
+  win: boolean;
+  score: number;
+  rounds: number;
+  friendlyHp: number;
+  enemyHp: number;
+  logPreview: string[];
+};
 
 type Props = {
   result: SimulationResponse | null;
   error: string | null;
-  onSubmitOnchain: () => void;
+  onSubmitOnchain: () => Promise<void> | void;
   submitting: boolean;
   walletConnected: boolean;
-  onShare: () => void;
+  onShare: () => Promise<void> | void;
   shareCopied: boolean;
   onPlayAgain: () => void;
 };
 
-const ResultScreen = ({
+export default function ResultScreen({
   result,
   error,
   onSubmitOnchain,
@@ -22,7 +31,19 @@ const ResultScreen = ({
   onShare,
   shareCopied,
   onPlayAgain,
-}: Props) => {
+}: Props) {
+  const outcomeText = result
+    ? result.win
+      ? "WIN"
+      : "LOSS"
+    : "No result yet";
+
+  const outcomeClass = result
+    ? result.win
+      ? "text-win"
+      : "text-lose"
+    : "";
+
   return (
     <main className="app-main">
       <section className="panel">
@@ -30,17 +51,20 @@ const ResultScreen = ({
 
         {!result && !error && (
           <p className="muted">
-            Run a simulation from the Draft screen to see your result.
+            Run a simulation first from the Draft tab to see your daily result.
           </p>
+        )}
+
+        {error && (
+          <div className="alert alert-error" style={{ marginTop: "0.75rem" }}>
+            {error}
+          </div>
         )}
 
         {result && (
           <div className="result-card result-anim">
             <p>
-              Outcome:{" "}
-              <strong className={result.win ? "text-win" : "text-lose"}>
-                {result.win ? "WIN" : "LOSS"}
-              </strong>
+              Outcome: <strong className={outcomeClass}>{outcomeText}</strong>
             </p>
             <p>
               Score: <strong>{result.score}</strong>
@@ -55,7 +79,7 @@ const ResultScreen = ({
 
             {result.logPreview?.length > 0 && (
               <>
-                <h3>Battle log (preview)</h3>
+                <h3 style={{ marginTop: "0.75rem" }}>Battle log (preview)</h3>
                 <ul className="log-list">
                   {result.logPreview.map((line, idx) => (
                     <li key={idx}>{line}</li>
@@ -63,51 +87,40 @@ const ResultScreen = ({
                 </ul>
               </>
             )}
+
+            <div className="actions" style={{ marginTop: "1rem" }}>
+              <button
+                className="btn-primary"
+                onClick={onSubmitOnchain}
+                disabled={submitting || !walletConnected}
+              >
+                {submitting
+                  ? "Submitting..."
+                  : walletConnected
+                  ? "Submit Score Onchain"
+                  : "Connect wallet to submit"}
+              </button>
+
+              <button
+                className="btn-secondary"
+                style={{ marginTop: "0.5rem" }}
+                onClick={onShare}
+                disabled={!result}
+              >
+                {shareCopied ? "Copied share text!" : "Copy share text"}
+              </button>
+
+              <button
+                className="btn-secondary"
+                style={{ marginTop: "0.5rem" }}
+                onClick={onPlayAgain}
+              >
+                Play again
+              </button>
+            </div>
           </div>
         )}
-
-        {error && <div className="alert alert-error">{error}</div>}
-      </section>
-
-      <section className="panel">
-        <h2>Actions</h2>
-        <div className="actions">
-          <button
-            className="btn-primary"
-            onClick={onSubmitOnchain}
-            disabled={submitting || !walletConnected || !result}
-          >
-            {submitting ? "Submitting..." : "Claim Badge / Submit Score"}
-          </button>
-
-          {!walletConnected && (
-            <p className="muted" style={{ marginTop: "0.3rem" }}>
-              Connect your wallet to save today&apos;s best score on Soneium.
-            </p>
-          )}
-
-          <button
-            type="button"
-            className="btn-secondary"
-            style={{ marginTop: "0.75rem", width: "100%" }}
-            onClick={onShare}
-            disabled={!result}
-          >
-            {shareCopied ? "Copied share text! ✅" : "Copy Share Text"}
-          </button>
-
-          <button
-            type="button"
-            className="btn-link"
-            style={{ marginTop: "0.25rem" }}
-            onClick={onPlayAgain}
-          >
-            Play again
-          </button>
-        </div>
       </section>
     </main>
   );
-};
-
-export default ResultScreen;
+}
