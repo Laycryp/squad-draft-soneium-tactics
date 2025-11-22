@@ -1,0 +1,12 @@
+{
+  "miniapp": {
+    "version": "1",
+    "id": "squad-draft-soneium-tactics",
+  "name": "Squad Draft: Soneium Tactics",
+  "url": "https://YOUR-VERCEL-URL",
+  "iconUrl": "https://YOUR-VERCEL-URL/icon-512.png",
+  "splashImageUrl": "https://YOUR-VERCEL-URL/splash.png",
+  "description": "Strategy mini app built for the Soneium ecosystem.",
+  "primaryCategory": "games"
+  }
+}

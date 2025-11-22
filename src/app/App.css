@@ -1,0 +1,464 @@
+:root {
+  color-scheme: dark;
+}
+
+.app-root {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+  color: #f9fafb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  padding: 1.5rem;
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-header {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.app-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.app-header h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.15rem;
+}
+
+.app-header p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+.wallet-box {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
+.wallet-address {
+  font-weight: 600;
+}
+
+.wallet-meta {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.wallet-error {
+  margin-top: 0.25rem;
+  color: #fecaca;
+  font-size: 0.8rem;
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  padding-bottom: 4rem; /* عشان ما يتداخل مع البار السفلي */
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid #1f2937;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+}
+
+.panel h2 {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.panel-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.muted {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* Profile / Lobby */
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 0, #facc15, #f97316);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.field-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+}
+
+.avatar-options {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.avatar-pill {
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  background: #020617;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+
+.avatar-pill-active {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px #22c55e55;
+}
+
+/* Season banner / leaderboard */
+
+.season-banner {
+  margin-top: 0.9rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.75rem;
+  background: radial-gradient(circle at top left, #0ea5e9, #22c55e 65%, #0f172a);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.season-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.season-subtitle {
+  font-size: 0.85rem;
+}
+
+.season-rank-pill {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  text-align: right;
+}
+
+.season-rank-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.season-rank-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Units grid */
+
+.units-grid {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+/* في شاشة الدرافت نستخدم Grid بعمودين/ثلاثة حسب العرض */
+.draft-units-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+/* Unit cards */
+
+.unit-card {
+  text-align: left;
+  border-radius: 0.9rem;
+  padding: 0.6rem;
+  background: #020617;
+  border: 1px solid #1f2937;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    border-color 0.12s ease, background 0.12s ease;
+  min-height: 90px;
+}
+
+.unit-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+  border-color: #4b5563;
+}
+
+.unit-card-selected {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px #22c55e55;
+}
+
+.unit-card-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.unit-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.unit-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.unit-role {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.unit-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #e5e7eb;
+}
+
+.unit-footer {
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: #9ca3af;
+}
+
+/* Buttons & alerts */
+
+.actions {
+  margin-top: 0.75rem;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(to right, #22c55e, #0ea5e9);
+  color: #020617;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #4b5563;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.btn-link {
+  border: none;
+  background: none;
+  color: #38bdf8;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.alert {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.alert-error {
+  background: #451a1a;
+  color: #fecaca;
+  border: 1px solid #b91c1c;
+}
+
+/* Result panel */
+
+.result-card {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  background: #020617;
+  border: 1px solid #1f2937;
+  font-size: 0.9rem;
+}
+
+.text-win {
+  color: #22c55e;
+}
+
+.text-lose {
+  color: #fb923c;
+}
+
+.log-list {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  color: #e5e7eb;
+}
+
+/* Leaderboard */
+
+.lb-wrapper {
+  margin-top: 0.9rem;
+}
+
+.lb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.lb-table th,
+.lb-table td {
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+}
+
+.lb-table thead {
+  background: #020617;
+}
+
+.lb-table tbody tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.lb-row-top {
+  font-weight: 600;
+}
+
+.lb-row-you {
+  background: rgba(34, 197, 94, 0.16);
+}
+
+/* Bottom nav (mobile-style tabs) */
+
+.bottom-nav {
+  margin-top: 1rem;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bottom-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.98);
+  border-radius: 999px;
+  border: 1px solid #1f2937;
+  padding: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+}
+
+.bottom-nav-btn {
+  flex: 1;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  cursor: pointer;
+}
+
+.bottom-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.bottom-nav-btn-active {
+  background: radial-gradient(circle at top, #22c55e, #15803d);
+  color: #022c22;
+}
+
+.bottom-nav-icon {
+  font-size: 1rem;
+}
+
+.bottom-nav-label {
+  font-size: 0.7rem;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wallet-box {
+    text-align: left;
+  }
+
+  .bottom-nav-inner {
+    border-radius: 1rem;
+  }
+}
