@@ -4,18 +4,24 @@
 import React, { useEffect } from "react";
 import { sdk } from "@farcaster/miniapp-sdk";
 
+type AppProps = {
+  title?: string; // نستقبل العنوان من app/app.tsx حتى يرضى TypeScript
+};
+
 /**
  * Minimal App shell kept only so TypeScript & Next build don't fail.
  * We don't rely on @neynar/react here.
- * The actual UI lives in src/app/page.tsx.
+ * The actual game UI lives in src/app/page.tsx.
  */
-export function App() {
+export function App({ title }: AppProps) {
   // نرسل ready() مرة احتياطياً – لن يضر لو استُدعي أكثر من مرة
   useEffect(() => {
     sdk.actions.ready().catch(console.error);
   }, []);
 
-  // لا نرسم أي شيء هنا لأن الـ UI الرئيسي في page.tsx
+  // العنوان لا نستخدمه هنا، الـ UI الرئيسي في page.tsx
+  void title;
+
   return null;
 }
 
