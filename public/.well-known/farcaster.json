@@ -1,12 +1,12 @@
 {
-  "miniapp": {
-    "version": "1",
-    "id": "squad-draft-soneium-tactics",
+  "id": "squad-draft-soneium-tactics",
   "name": "Squad Draft: Soneium Tactics",
-  "url": "https://YOUR-VERCEL-URL",
-  "iconUrl": "https://YOUR-VERCEL-URL/icon-512.png",
-  "splashImageUrl": "https://YOUR-VERCEL-URL/splash.png",
-  "description": "Strategy mini app built for the Soneium ecosystem.",
-  "primaryCategory": "games"
+  "url": "https://squad-draft-soneium-tactics.vercel.app",
+  "iconUrl": "https://squad-draft-soneium-tactics.vercel.app/icon-512.png",
+  "splashImageUrl": "https://squad-draft-soneium-tactics.vercel.app/splash.png",
+  "description": "Draft a 6-unit squad under budget, simulate daily battles, and climb the Soneium tactics leaderboard.",
+  "primaryCategory": "games",
+  "developer": {
+    "name": "Laycryp"
   }
 }
