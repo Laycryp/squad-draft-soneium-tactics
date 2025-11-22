@@ -3,8 +3,8 @@
 
 import * as React from "react";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+// نستخدم type بدل interface بدون أعضاء
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 /**
  * Minimal input wrapper.

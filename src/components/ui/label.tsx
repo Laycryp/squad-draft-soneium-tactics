@@ -3,8 +3,8 @@
 
 import * as React from "react";
 
-export interface LabelProps
-  extends React.LabelHTMLAttributes<HTMLLabelElement> {}
+// نفس الفكرة هنا: type بدل interface فارغة
+export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>;
 
 /**
  * Minimal label wrapper.
